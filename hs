@@ -10,7 +10,7 @@ game.StarterGui:SetCore("SendNotification", {
     Duration = "10";
     Callback = NotificationBindable;
 })
-wait(1)
+wait(10)
 spawn(function()
     while wait(1) do
 		pcall(function()
@@ -211,11 +211,97 @@ task.spawn(function()
         end)
     end
 end)
+
+_G.Melee = true;
+while _G.Melee do wait()
+local args = {
+    [1] = "AddPoint",
+    [2] = "Melee",
+    [3] = 1
+
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end
+_G.Melee1 = true;
+while _G.Melee1 do wait()
+local args = {
+    [1] = "AddPoint",
+    [2] = "Melee",
+    [3] = 3
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end
+_G.Blackleg = true
+while _G.Blackleg do wait()
+    local args = {
+        [1] = "BuyBlackLeg"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end
+function UseCode(Text)
+    game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Text)
+end
+UseCode("Sub2Fer999")
+UseCode("Enyu_is_Pro")
+UseCode("Magicbus")
+UseCode("JCWK")
+UseCode("Starcodeheo")
+UseCode("Bluxxy")
+UseCode("THEGREATACE")
+UseCode("SUB2GAMERROBOT_EXP1")
+UseCode("StrawHatMaine")
+UseCode("Sub2OfficialNoobie")
+UseCode("SUB2NOOBMASTER123")
+UseCode("Sub2Daigrock")
+UseCode("Axiore")
+UseCode("TantaiGaming")
+UseCode("STRAWHATMAINE")
+end
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("NoName Hub", "DarkTheme")
+local Tab = Window:NewTab("Main")
+
+local Section = Tab:NewSection("Auto Equip")
+
+local Weaponlist = {}
+local Weapon = nil
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
+
+Section:NewDropdown("select weapon", " ", Weaponlist, function(currentOption)
+    Weapon = currentOption
+end)
+
+Section:NewToggle("Auto Equip", " ", function(a)
+AutoEquiped = a
+end)
+
+spawn(function()
+while wait() do
+if AutoEquiped then
+pcall(function()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+end)
+end
+end
+end)
+Section:NewToggle("Auto Farm", "ToggleInfo", function(state)
+    if state then
+        _G.Auto_Farm = true
+    else
+        _G.Auto_Farm = false
+    end
+end)
 -- Use Function
-NeedAttacking = true
+if _G.NeedAttacking then
 
 getgenv().Settings = {
-    NoAttackAnimation = false,
+    NoAttackAnimation = true,
     NewFastAttack = true,
     FastAttack = true,
     DamageAura = true,
@@ -494,88 +580,11 @@ game.Players.LocalPlayer.CharacterAdded:Connect(function(Chr)
     Chr.ChildAdded:Connect(DestroyBusy)
     OnChar(Chr)
 end)
-_G.Melee = true;
-while _G.Melee do wait()
-local args = {
-    [1] = "AddPoint",
-    [2] = "Melee",
-    [3] = 1
-
-}
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
 end
-_G.Melee1 = true;
-while _G.Melee1 do wait()
-local args = {
-    [1] = "AddPoint",
-    [2] = "Melee",
-    [3] = 3
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-end
-_G.Blackleg = true
-while _G.Blackleg do wait()
-    local args = {
-        [1] = "BuyBlackLeg"
-    }
-    
-    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-end
-function UseCode(Text)
-    game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Text)
-end
-UseCode("Sub2Fer999")
-UseCode("Enyu_is_Pro")
-UseCode("Magicbus")
-UseCode("JCWK")
-UseCode("Starcodeheo")
-UseCode("Bluxxy")
-UseCode("THEGREATACE")
-UseCode("SUB2GAMERROBOT_EXP1")
-UseCode("StrawHatMaine")
-UseCode("Sub2OfficialNoobie")
-UseCode("SUB2NOOBMASTER123")
-UseCode("Sub2Daigrock")
-UseCode("Axiore")
-UseCode("TantaiGaming")
-UseCode("STRAWHATMAINE")
-end
-
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("NoName Hub", "DarkTheme")
-local Tab = Window:NewTab("Main")
-
-local Section = Tab:NewSection("Auto Equip")
-
-local Weaponlist = {}
-local Weapon = nil
-
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(Weaponlist,v.Name)
-end
-
-Section:NewDropdown("select weapon", " ", Weaponlist, function(currentOption)
-    Weapon = currentOption
-end)
-
-Section:NewToggle("Auto Equip", " ", function(a)
-AutoEquiped = a
-end)
-
-spawn(function()
-while wait() do
-if AutoEquiped then
-pcall(function()
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
-end)
-end
-end
-end)
-Section:NewToggle("Auto Farm", "ToggleInfo", function(state)
+Section:NewToggle("FastAttack", "FastAttack", function(state)
     if state then
-        _G.Auto_Farm = true
+    _G.NeedAttacking = true
     else
-        _G.Auto_Farm = false
+    _G.NeedAttacking = false
     end
 end)
