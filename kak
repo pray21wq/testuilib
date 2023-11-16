@@ -544,7 +544,7 @@ end
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("NoName Hub", "DarkTheme")
 local Tab = Window:NewTab("Main")
-Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+Section:NewToggle("Auto Farm", "ToggleInfo", function(state)
     if state then
         _G.Auto_Farm = true
     else
