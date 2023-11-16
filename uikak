@@ -6,11 +6,11 @@ NotificationBindable.OnInvoke = callback
  
 game.StarterGui:SetCore("SendNotification", {
     Title = "Luxury hub";
-    Text = "Kaitan Mode Load";
+    Text = "ui กากๆ อย่าไปสน";
     Duration = "10";
     Callback = NotificationBindable;
 })
-wait(10)
+wait(1)
 spawn(function()
     while wait(1) do
 		pcall(function()
@@ -297,9 +297,8 @@ Section:NewToggle("Auto Farm", "ToggleInfo", function(state)
         _G.Auto_Farm = false
     end
 end)
--- Use Function
-if _G.NeedAttacking then
 
+_G.NeedAttacking = true
 getgenv().Settings = {
     NoAttackAnimation = true,
     NewFastAttack = true,
@@ -579,12 +578,4 @@ game.Players.LocalPlayer.CharacterAdded:Connect(function(Chr)
     Chr.DescendantAdded:Connect(DestroyBusy)
     Chr.ChildAdded:Connect(DestroyBusy)
     OnChar(Chr)
-end)
-end
-Section:NewToggle("FastAttack", "FastAttack", function(state)
-    if state then
-    _G.NeedAttacking = true
-    else
-    _G.NeedAttacking = false
-    end
 end)
