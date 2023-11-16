@@ -10,7 +10,7 @@ game.StarterGui:SetCore("SendNotification", {
     Duration = "10";
     Callback = NotificationBindable;
 })
-wait(10)
+wait(1)
 spawn(function()
     while wait(1) do
 		pcall(function()
@@ -541,16 +541,11 @@ UseCode("Axiore")
 UseCode("TantaiGaming")
 UseCode("STRAWHATMAINE")
 end
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("NoName Hub", "DarkTheme")
 local Tab = Window:NewTab("Main")
-Section:NewToggle("Auto Farm", "ToggleInfo", function(state)
-    if state then
-        _G.Auto_Farm = true
-    else
-        _G.Auto_Farm = false
-    end
-end)
+
 local Section = Tab:NewSection("Auto Equip")
 
 local Weaponlist = {}
@@ -576,4 +571,11 @@ game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players")
 end)
 end
 end
+end)
+Section:NewToggle("Auto Farm", "ToggleInfo", function(state)
+    if state then
+        _G.Auto_Farm = true
+    else
+        _G.Auto_Farm = false
+    end
 end)
